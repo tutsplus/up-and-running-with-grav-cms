@@ -1,0 +1,18 @@
+{% extends 'partials/base.html.twig' %}
+
+  {% set collection = page.collection() %}
+
+  {% block content %}
+
+    {% for page in collection %}
+    <div class="blog_post">
+      <h1 class="blog_post_title"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+      <div class="blog_post_date">Post on <span>{{ page.date|date("d M") }}</span></div>
+      <div class="blog_post_content">
+        {{ page.summary }}
+      </div>
+      <div class="read_more"><a href="{{ page.url }}">Read More &rarr;</a></div>
+    </div>
+    {% endfor %}
+
+  {% endblock %}

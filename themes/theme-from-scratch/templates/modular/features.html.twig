@@ -1,0 +1,13 @@
+<div class="standard_width">
+  <div class="features">
+    {{ content }}
+    <div class="features_list clearfix">
+      {% for feature in page.header.features %}
+      <div class="feature">
+        <i class="fa fa-fw fa-{{ feature.icon }}"></i>
+        <h4>{{ feature.header }}</h4>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

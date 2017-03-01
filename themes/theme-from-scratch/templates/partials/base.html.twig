@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+
+    {% do assets.addCss('theme://css/font-awesome.min.css', 100) %}
+    {% do assets.addCss('theme://css/custom.css') %}
+    {% do assets.addCSS('https://fonts.googleapis.com/css?family=Noto+Sans') %}
+
+    {{ assets.css() }}
+
+  </head>
+  <body>
+
+    {% block top %}
+    <header class="doc_header clearfix">
+      <div class="standard_width">
+        <div class="page_title">
+          <a href="{{ base_url == '' ? '/' : base_url }}">
+            {{ config.site.title }}
+          </a>
+        </div>
+
+        <input type="checkbox" id="open_menu" class="open_menu">
+        <label for="open_menu" class="burger"><i class="fa fa-bars"></i>Open Menu</label>
+
+        <div class="page_menu">
+          <ul>
+            {% for page in pages.children.visible %}
+              <li>
+                <a href="{{ page.url }}">
+                  {{ page.menu }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+    </header>
+    {% endblock %}
+
+    {% block main %}
+    <div class="main_wrap">
+      <main class="standard_width">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+    {% endblock %}
+
+    <div class="footer_wrap">
+      <footer class="standard_width">
+        <p>Built with Grav CMS</p>
+      </footer>
+    </div>
+
+  </body>
+</html>
